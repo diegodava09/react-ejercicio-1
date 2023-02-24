@@ -5,30 +5,38 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Calculator(props) {
 
     const select = (event) => {
-        const value = event.target.value
+        const value = parseInt(event.target.value)
         setOperation(value)
+    }
+
+
+    const ids = {
+        "+":0,
+        "-":1,
+        "x":2,
+        "/":3
     }
 
     const [operation,setOperation] = useState(0)
     const [num1, setNum1] = useState(0);
     const [num2, setNum2] = useState(0);
 
+    const buttons = Object.entries(ids).map(([key,value]) => 
+        <Button variant={operation === value ? "danger" : "primary" } key={value} value={value} onClick={select}>{key.toString()}</Button>
+    )
 
     return (
         <div>
-            <div className='m-3'>
+            <div className='m-3'>    
                 <form>
-                    <div className="row w-25  gap-1">
+                    <div className="row w-50  gap-1">
                         <div className='col'><input type="number" className="form-control" id="num1" placeholder="Número 1" onChange={e => setNum1(e.target.value)} /></div>
                         <div className='col'><input type="number" className="form-control" id="num2" placeholder="Número 2" onChange={e => setNum2(e.target.value)} /></div>
                     </div>
                 </form>
             </div>
             <div className="d-flex flex-row justify-content-between w-25 m-3">
-                <div><Button variant="primary" value={0} onClick={select}>+</Button></div>
-                <div><Button variant="primary" value={1} onClick={select}>-</Button></div>
-                <div><Button variant="primary" value={2} onClick={select}>x</Button></div>
-                <div><Button variant="primary" value={3} onClick={select}>/</Button></div>
+                {buttons}
             </div>
 
             <div className='m-3'>
