@@ -27,7 +27,7 @@ function Resultado(props){
 
     return (
         <div className="resultado">
-            <h1>Resultado: {resultado}</h1>
+            <h3>Resultado: {resultado}</h3>
         </div>
     )
 }
