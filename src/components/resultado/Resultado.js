@@ -1,4 +1,5 @@
-import { suma, resta, multiplicacion, division } from '../calculator/operations.js'
+const operations = require('../calculator/operations.js')
+const { suma, resta, multiplicacion, division } = operations
 
 function Resultado(props){
 
